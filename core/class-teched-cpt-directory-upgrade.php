@@ -215,6 +215,7 @@ class TechEd_CPT_Directory_Upgrade {
 					'post_title' => get_the_title(),
 					'post_status' => 'publish',
 					'post_author' => get_the_author_meta( 'ID' ),
+					'post_date' => date( 'Y-m-d H:i:s', get_post_time() ),
 				), true );
 				
 				update_post_meta( get_the_ID(), 'directory_name', trim( get_post_meta( get_the_ID(), '_wpbdp[fields][12]', true ) ) );
