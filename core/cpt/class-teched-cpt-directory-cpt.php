@@ -18,9 +18,9 @@ class CPT_TechEd_CPT_Directory extends RBM_CPT {
 	public $labels = array();
 	public $icon = 'book-alt';
 	public $post_args = array(
-		'hierarchical' => true,
+		'hierarchical' => false,
 		'supports' => array( 'title', 'editor', 'author', 'thumbnail' ),
-		'has_archive' => false,
+		'has_archive' => true,
 		'rewrite' => array(
 			'slug' => 'directory',
 			'with_front' => false,
