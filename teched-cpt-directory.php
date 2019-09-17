@@ -35,6 +35,18 @@ if ( ! class_exists( 'TechEd_CPT_Directory' ) ) {
 		private $admin_errors;
 
 		/**
+		 * @var			object $field_helpers RBM_Field_Helpers object
+		 * @since		{{VERSION}}
+		 */
+		public $field_helpers;
+
+		/**
+		 * @var			object $upgrade TechEd_CPT_Directory_Upgrade object
+		 * @since		{{VERSION}}
+		 */
+		public $upgrade;
+
+		/**
 		 * Get active instance
 		 *
 		 * @access	  public
@@ -68,6 +80,30 @@ if ( ! class_exists( 'TechEd_CPT_Directory' ) ) {
 				
 				return false;
 				
+			}
+
+			// Check for the CPT class, to ensure that RBM CPTs has successfully loaded
+			if ( ! class_exists( 'RBM_CPT' ) ) {
+				
+				$this->admin_errors[] = sprintf( __( 'To use the %s Plugin, %s must be installed!', 'teched-cpt-directory' ), '<strong>' . $this->plugin_data['Name'] . '</strong>', '<a href="//github.com/realbig/rbm-cpts/" target="_blank">' . __( 'RBM Custom Post Types', 'gscr-cpt-radio-shows' ) . '</a>' );
+				
+				if ( ! has_action( 'admin_notices', array( $this, 'admin_errors' ) ) ) {
+					add_action( 'admin_notices', array( $this, 'admin_errors' ) );
+				}
+				
+				return false;
+				
+			}
+
+			// RBM CPTs will complain about this too, but that's OK
+			if ( ! class_exists( 'RBM_FieldHelpers' ) ) {
+				$this->admin_errors[] = sprintf( __( 'To use the %s Plugin, %s must be installed!', 'teched-cpt-directory' ), '<strong>' . $this->plugin_data['Name'] . '</strong>', '<a href="//github.com/realbig/rbm-field-helpers-wrapper/" target="_blank">' . __( 'RBM Field Helpers', 'teched-cpt-directory' ) . '</a>' );
+				
+				if ( ! has_action( 'admin_notices', array( $this, 'admin_errors' ) ) ) {
+					add_action( 'admin_notices', array( $this, 'admin_errors' ) );
+				}
+				
+				return false;
 			}
 			
 			$this->require_necessities();
@@ -161,7 +197,54 @@ if ( ! class_exists( 'TechEd_CPT_Directory' ) ) {
 		 * @return	  void
 		 */
 		private function require_necessities() {
-			
+
+			$this->field_helpers = new RBM_FieldHelpers( array(
+				'ID'   => 'directory',
+				'l10n' => array(
+					'field_table'    => array(
+						'delete_row'    => __( 'Delete Row', 'teched-cpt-directory' ),
+						'delete_column' => __( 'Delete Column', 'teched-cpt-directory' ),
+					),
+					'field_select'   => array(
+						'no_options'       => __( 'No select options.', 'teched-cpt-directory' ),
+						'error_loading'    => __( 'The results could not be loaded', 'teched-cpt-directory' ),
+						/* translators: %d is number of characters over input limit */
+						'input_too_long'   => __( 'Please delete %d character(s)', 'teched-cpt-directory' ),
+						/* translators: %d is number of characters under input limit */
+						'input_too_short'  => __( 'Please enter %d or more characters', 'teched-cpt-directory' ),
+						'loading_more'     => __( 'Loading more results...', 'teched-cpt-directory' ),
+						/* translators: %d is maximum number items selectable */
+						'maximum_selected' => __( 'You can only select %d item(s)', 'teched-cpt-directory' ),
+						'no_results'       => __( 'No results found', 'teched-cpt-directory' ),
+						'searching'        => __( 'Searching...', 'teched-cpt-directory' ),
+					),
+					'field_repeater' => array(
+						'collapsable_title' => __( 'New Row', 'teched-cpt-directory' ),
+						'confirm_delete'    => __( 'Are you sure you want to delete this element?', 'teched-cpt-directory' ),
+						'delete_item'       => __( 'Delete', 'teched-cpt-directory' ),
+						'add_item'          => __( 'Add', 'teched-cpt-directory' ),
+					),
+					'field_media'    => array(
+						'button_text'        => __( 'Upload / Choose Media', 'teched-cpt-directory' ),
+						'button_remove_text' => __( 'Remove Media', 'teched-cpt-directory' ),
+						'window_title'       => __( 'Choose Media', 'teched-cpt-directory' ),
+					),
+					'field_checkbox' => array(
+						'no_options_text' => __( 'No options available.', 'teched-cpt-directory' ),
+					),
+				),
+			) );
+
+			if ( ! class_exists( 'Term_Management_Tools' ) ) {
+				require_once trailingslashit( TechEd_CPT_Directory_DIR ) . 'vendor/autoload.php';
+			}
+
+			require_once trailingslashit( TechEd_CPT_Directory_DIR ) . 'core/cpt/class-teched-cpt-directory-cpt.php';
+			$this->cpt = new CPT_TechEd_CPT_Directory();
+
+			require_once trailingslashit( TechEd_CPT_Directory_DIR ) . 'core/class-teched-cpt-directory-upgrade.php';
+			$this->upgrade = new TechEd_CPT_Directory_Upgrade();
+
 		}
 		
 		/**
