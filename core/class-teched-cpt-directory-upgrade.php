@@ -190,7 +190,7 @@ class TechEd_CPT_Directory_Upgrade {
 
 		// Thanks, Scribu for the quick way to convert these!
 		$_POST['new_tax'] = 'teched-directory-state';
-		Term_Management_Tools::handle_change_tax( $all_states, $old_category );
+		Term_Management_Tools::handle_change_tax( $states_categories, $old_category );
 
 		$_POST['new_tax'] = 'teched-directory-category';
 		Term_Management_Tools::handle_change_tax( $new_categories, $old_category );
@@ -217,8 +217,8 @@ class TechEd_CPT_Directory_Upgrade {
 					'post_author' => get_the_author_meta( 'ID' ),
 				), true );
 				
-				update_post_meta( get_the_ID(), 'directory_name', get_post_meta( get_the_ID(), '_wpbdp[fields][12]', true ) );
-				update_post_meta( get_the_ID(), 'directory_title', get_post_meta( get_the_ID(), '_wpbdp[fields][13]', true ) );
+				update_post_meta( get_the_ID(), 'directory_name', trim( get_post_meta( get_the_ID(), '_wpbdp[fields][12]', true ) ) );
+				update_post_meta( get_the_ID(), 'directory_title', trim( get_post_meta( get_the_ID(), '_wpbdp[fields][13]', true ) ) );
 
 				// Address gets a little more complicated
 				$address = get_post_meta( get_the_ID(), '_wpbdp[fields][10]', true );
@@ -274,7 +274,7 @@ class TechEd_CPT_Directory_Upgrade {
 				$address_array = array_values( $address_array );
 
 				// Save line 1
-				update_post_meta( get_the_ID(), 'directory_street_address_1', ( isset( $address_array[0] ) && $address_array[0] ) ? $address_array[0] : '' ); 
+				update_post_meta( get_the_ID(), 'directory_street_address_1', ( isset( $address_array[0] ) && $address_array[0] ) ? trim( $address_array[0] ) : '' ); 
 
 				// Assume it is on index 1
 				$city_state_zip_index = 1;
@@ -282,7 +282,7 @@ class TechEd_CPT_Directory_Upgrade {
 				// There's a second Street Address Line
 				if ( count( $address_array ) > 2 ) {
 
-					update_post_meta( get_the_ID(), 'directory_street_address_2', $address_array[1] ); 
+					update_post_meta( get_the_ID(), 'directory_street_address_2', trim( $address_array[1] ) );
 
 					$city_state_zip_index = 2;
 
@@ -299,7 +299,7 @@ class TechEd_CPT_Directory_Upgrade {
 
 				$city_state_array = preg_split( '/\s?,\s?/', $city_state_zip );
 
-				update_post_meta( get_the_ID(), 'directory_city', ( isset( $city_state_array[0] ) && $city_state_array[0] ) ? $city_state_array[0] : '' );
+				update_post_meta( get_the_ID(), 'directory_city', ( isset( $city_state_array[0] ) && $city_state_array[0] ) ? trim( $city_state_array[0] ) : '' );
 
 				$state = ( isset( $city_state_array[1] ) && $city_state_array[1] ) ? $city_state_array[1] : '';
 				$state = trim( $state );
@@ -320,17 +320,17 @@ class TechEd_CPT_Directory_Upgrade {
 
 				// The old implementation had a separate field for ZIP for some reason?
 				$separate_zip = get_post_meta( get_the_ID(), '_wpbdp[fields][11]', true );
-				update_post_meta( get_the_ID(), 'directory_zip', ( $separate_zip ) ? $separate_zip : $zip );
+				update_post_meta( get_the_ID(), 'directory_zip', ( $separate_zip ) ? trim( $separate_zip ) : trim( $zip ) );
 
-				update_post_meta( get_the_ID(), 'directory_business_email', get_post_meta( get_the_ID(), '_wpbdp[fields][8]', true ) );
-				update_post_meta( get_the_ID(), 'directory_phone', get_post_meta( get_the_ID(), '_wpbdp[fields][6]', true ) );
-				update_post_meta( get_the_ID(), 'directory_fax', get_post_meta( get_the_ID(), '_wpbdp[fields][7]', true ) );
+				update_post_meta( get_the_ID(), 'directory_business_email', trim( get_post_meta( get_the_ID(), '_wpbdp[fields][8]', true ) ) );
+				update_post_meta( get_the_ID(), 'directory_phone', trim( get_post_meta( get_the_ID(), '_wpbdp[fields][6]', true ) ) );
+				update_post_meta( get_the_ID(), 'directory_fax', trim( get_post_meta( get_the_ID(), '_wpbdp[fields][7]', true ) ) );
 
 				// For some reason, they actually saved this data as serialized
 				$website_url = get_post_meta( get_the_ID(), '_wpbdp[fields][5]', true );
 
-				update_post_meta( get_the_ID(), 'directory_website_url', ( is_array( $website_url ) && isset( $website_url[0] ) && $website_url[0] ) ? $website_url[0] : '' );
-				update_post_meta( get_the_ID(), 'directory_website_text', ( is_array( $website_url ) && isset( $website_url[1] ) && $website_url[1] ) ? $website_url[1] : '' );
+				update_post_meta( get_the_ID(), 'directory_website_url', ( is_array( $website_url ) && isset( $website_url[0] ) && $website_url[0] ) ? trim( $website_url[0] ) : '' );
+				update_post_meta( get_the_ID(), 'directory_website_text', ( is_array( $website_url ) && isset( $website_url[1] ) && $website_url[1] ) ? trim( $website_url[1] ) : '' );
 
             endwhile;
 
