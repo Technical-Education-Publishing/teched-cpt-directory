@@ -16,7 +16,7 @@ class CPT_TechEd_CPT_Directory extends RBM_CPT {
 	public $label_singular = null;
 	public $label_plural = null;
 	public $labels = array();
-	public $icon = 'controls-volumeon';
+	public $icon = 'book-alt';
 	public $post_args = array(
 		'hierarchical' => true,
 		'supports' => array( 'title', 'editor', 'author', 'thumbnail' ),
