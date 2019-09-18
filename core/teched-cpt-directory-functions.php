@@ -86,6 +86,7 @@ function teched_directory_get_state_list() {
 		'AE' => __( 'Armed Forces Europe', 'teched-cpt-directory' ),
 		'AP' => __( 'Armed Forces Pacific', 'teched-cpt-directory' ),
 		'AS' => __( 'American Samoa', 'teched-cpt-directory' ),
+		'VI' => __( 'Virgin Islands', 'teched-cpt-directory' ),
 	);
 
 }
