@@ -87,6 +87,8 @@ function teched_directory_get_state_list() {
 		'AP' => __( 'Armed Forces Pacific', 'teched-cpt-directory' ),
 		'AS' => __( 'American Samoa', 'teched-cpt-directory' ),
 		'VI' => __( 'Virgin Islands', 'teched-cpt-directory' ),
+		'PR' => __( 'Puerto Rico', 'teched-cpt-directory' ),
+		'PW' => __( 'Palau', 'teched-cpt-directory' ),
 	);
 
 }

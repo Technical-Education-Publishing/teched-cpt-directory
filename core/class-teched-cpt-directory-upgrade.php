@@ -303,7 +303,7 @@ class TechEd_CPT_Directory_Upgrade {
 				update_post_meta( get_the_ID(), 'directory_city', ( isset( $city_state_array[0] ) && $city_state_array[0] ) ? trim( $city_state_array[0] ) : '' );
 
 				$state = ( isset( $city_state_array[1] ) && $city_state_array[1] ) ? $city_state_array[1] : '';
-				$state = trim( $state );
+				$state = trim( preg_replace( '/[^a-z]/i', '', $state ) );
 
 				if ( $state ) {
 
