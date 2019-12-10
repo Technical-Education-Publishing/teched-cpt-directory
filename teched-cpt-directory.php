@@ -3,7 +3,7 @@
  * Plugin Name: CPT Directory
  * Plugin URI: https://github.com/realbig/teched-cpt-directory
  * Description: Holds the Directory Post Type
- * Version: 0.1.0
+ * Version: 1.0.0
  * Text Domain: teched-cpt-directory
  * Author: Real Big Marketing
  * Author URI: https://realbigmarketing.com/
@@ -20,31 +20,31 @@ if ( ! class_exists( 'TechEd_CPT_Directory' ) ) {
 	/**
 	 * Main TechEd_CPT_Directory class
 	 *
-	 * @since	  {{VERSION}}
+	 * @since	  1.0.0
 	 */
 	final class TechEd_CPT_Directory {
 		
 		/**
 		 * @var			array $plugin_data Holds Plugin Header Info
-		 * @since		{{VERSION}}
+		 * @since		1.0.0
 		 */
 		public $plugin_data;
 		
 		/**
 		 * @var			array $admin_errors Stores all our Admin Errors to fire at once
-		 * @since		{{VERSION}}
+		 * @since		1.0.0
 		 */
 		private $admin_errors;
 
 		/**
 		 * @var			object $field_helpers RBM_Field_Helpers object
-		 * @since		{{VERSION}}
+		 * @since		1.0.0
 		 */
 		public $field_helpers;
 
 		/**
 		 * @var			object $upgrade TechEd_CPT_Directory_Upgrade object
-		 * @since		{{VERSION}}
+		 * @since		1.0.0
 		 */
 		public $upgrade;
 
@@ -52,7 +52,7 @@ if ( ! class_exists( 'TechEd_CPT_Directory' ) ) {
 		 * Get active instance
 		 *
 		 * @access	  public
-		 * @since	  {{VERSION}}
+		 * @since	  1.0.0
 		 * @return	  object self::$instance The one true TechEd_CPT_Directory
 		 */
 		public static function instance() {
@@ -119,7 +119,7 @@ if ( ! class_exists( 'TechEd_CPT_Directory' ) ) {
 		 * Setup plugin constants
 		 *
 		 * @access	  private
-		 * @since	  {{VERSION}}
+		 * @since	  1.0.0
 		 * @return	  void
 		 */
 		private function setup_constants() {
@@ -158,7 +158,7 @@ if ( ! class_exists( 'TechEd_CPT_Directory' ) ) {
 		 * Internationalization
 		 *
 		 * @access	  private 
-		 * @since	  {{VERSION}}
+		 * @since	  1.0.0
 		 * @return	  void
 		 */
 		private function load_textdomain() {
@@ -195,7 +195,7 @@ if ( ! class_exists( 'TechEd_CPT_Directory' ) ) {
 		 * Include different aspects of the Plugin
 		 * 
 		 * @access	  private
-		 * @since	  {{VERSION}}
+		 * @since	  1.0.0
 		 * @return	  void
 		 */
 		private function require_necessities() {
@@ -253,7 +253,7 @@ if ( ! class_exists( 'TechEd_CPT_Directory' ) ) {
 		 * Show admin errors.
 		 * 
 		 * @access	  public
-		 * @since	  {{VERSION}}
+		 * @since	  1.0.0
 		 * @return	  HTML
 		 */
 		public function admin_errors() {
@@ -272,7 +272,7 @@ if ( ! class_exists( 'TechEd_CPT_Directory' ) ) {
 		 * Register our CSS/JS to use later
 		 * 
 		 * @access	  public
-		 * @since	  {{VERSION}}
+		 * @since	  1.0.0
 		 * @return	  void
 		 */
 		public function register_scripts() {
@@ -329,7 +329,7 @@ if ( ! class_exists( 'TechEd_CPT_Directory' ) ) {
  * The main function responsible for returning the one true TechEd_CPT_Directory
  * instance to functions everywhere
  *
- * @since	  {{VERSION}}
+ * @since	  1.0.0
  * @return	  \TechEd_CPT_Directory The one true TechEd_CPT_Directory
  */
 add_action( 'plugins_loaded', 'teched_cpt_directory_load' );

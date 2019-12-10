@@ -2,7 +2,7 @@
 /**
  * Handles plugin upgrades.
  *
- * @since {{VERSION}}
+ * @since 1.0.0
  */
 
 defined( 'ABSPATH' ) || die();
@@ -12,14 +12,14 @@ defined( 'ABSPATH' ) || die();
  *
  * Handles plugin upgrades.
  *
- * @since {{VERSION}}
+ * @since 1.0.0
  */
 class TechEd_CPT_Directory_Upgrade {
 
 	/**
 	 * TechEd_CPT_Directory_Upgrade constructor.
 	 *
-	 * @since {{VERSION}}
+	 * @since 1.0.0
 	 *
 	 * @return bool True if needs to upgrade, false if does not.
 	 */
@@ -41,7 +41,7 @@ class TechEd_CPT_Directory_Upgrade {
 	/**
 	 * Checks for upgrades and migrations.
 	 *
-	 * @since {{VERSION}}
+	 * @since 1.0.0
 	 * @access private
 	 */
 	function check_upgrades() {
@@ -67,7 +67,7 @@ class TechEd_CPT_Directory_Upgrade {
 	/**
 	 * Runs upgrades.
 	 *
-	 * @since {{VERSION}}
+	 * @since 1.0.0
 	 * @access private
 	 */
 	function do_upgrades() {
@@ -90,7 +90,7 @@ class TechEd_CPT_Directory_Upgrade {
 	/**
 	 * Returns an array of all versions that require an upgrade.
 	 *
-	 * @since {{VERSION}}
+	 * @since 1.0.0
 	 * @access private
 	 *
 	 * @return array
@@ -105,7 +105,7 @@ class TechEd_CPT_Directory_Upgrade {
 	/**
 	 * Displays upgrade nag.
 	 *
-	 * @since {{VERSION}}
+	 * @since 1.0.0
 	 * @access private
 	 */
 	function show_upgrade_nag() {
@@ -125,7 +125,7 @@ class TechEd_CPT_Directory_Upgrade {
 	/**
 	 * Displays the upgrade complete message.
 	 *
-	 * @since {{VERSION}}
+	 * @since 1.0.0
 	 * @access private
 	 */
 	function show_upgraded_message() {
@@ -141,7 +141,7 @@ class TechEd_CPT_Directory_Upgrade {
 	/**
 	 * 1.0.0 upgrade script.
 	 *
-	 * @since {{VERSION}}
+	 * @since 1.0.0
 	 * @access private
 	 */
 	function upgrade_1_0_0() {

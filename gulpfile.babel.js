@@ -258,6 +258,8 @@ function version() {
         .pipe(gulp.dest('./'));
 }
 
+gulp.task( 'version', version );
+
 function setProd( done ) {
 	
 	PRODUCTION = true;
@@ -337,4 +339,4 @@ function rename( done ) {
 
 // Package task
 gulp.task('package',
-  gulp.series(setProd, version, 'build', generate_pot, releaseCopy, 'release:grunt-compress', rename, releaseCleanup, removeProd, 'build'));
+  gulp.series(setProd, 'version', 'build', generate_pot, releaseCopy, 'release:grunt-compress', rename, releaseCleanup, removeProd, 'build'));
