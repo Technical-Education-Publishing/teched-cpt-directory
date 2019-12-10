@@ -81,7 +81,7 @@ class CPT_TechEd_CPT_Directory extends RBM_CPT {
 
         $args = array(
             'hierarchical'          => true,
-            'labels'                => $this->get_taxonomy_labels( __( 'Category', 'teched-cpt-directory' ), __( 'Categories', 'teched-cpt-directory' ) ),
+            'labels'                => $this->get_taxonomy_labels( __( 'Directory Category', 'teched-cpt-directory' ), __( 'Categories', 'teched-cpt-directory' ) ),
             'show_in_menu'          => true,
             'show_ui'               => true,
             'show_admin_column'     => true,
@@ -94,7 +94,7 @@ class CPT_TechEd_CPT_Directory extends RBM_CPT {
 
         $args = array(
             'hierarchical'          => false,
-            'labels'                => $this->get_taxonomy_labels( __( 'Tag', 'teched-cpt-directory' ), __( 'Tags', 'teched-cpt-directory' ) ),
+            'labels'                => $this->get_taxonomy_labels( __( 'Directory Tag', 'teched-cpt-directory' ), __( 'Tags', 'teched-cpt-directory' ) ),
             'show_in_menu'          => true,
             'show_ui'               => true,
             'show_admin_column'     => true,
