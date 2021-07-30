@@ -21,6 +21,7 @@ class CPT_TechEd_CPT_Directory extends RBM_CPT {
 		'hierarchical' => false,
 		'supports' => array( 'title', 'editor', 'author', 'thumbnail' ),
 		'has_archive' => true,
+        'exclude_from_search' => true,
 		'rewrite' => array(
 			'slug' => 'directory',
 			'with_front' => false,
