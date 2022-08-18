@@ -127,9 +127,9 @@ class CPT_TechEd_CPT_Directory extends RBM_CPT {
         $labels = array(
             'name'                       => $menu_name,
             'singular_name'              => $singular,
-            'search_items'               => sprintf( __( 'Search %', 'teched-cpt-directory' ), $plural ),
+            'search_items'               => sprintf( __( 'Search %s', 'teched-cpt-directory' ), $plural ),
             'popular_items'              => sprintf( __( 'Popular %s', 'teched-cpt-directory' ), $plural ),
-            'all_items'                  => sprintf( __( 'All %', 'teched-cpt-directory' ), $plural ),
+            'all_items'                  => sprintf( __( 'All %s', 'teched-cpt-directory' ), $plural ),
             'parent_item'                => sprintf( __( 'Parent %s', 'teched-cpt-directory' ), $singular ),
             'parent_item_colon'          => sprintf( __( 'Parent %s:', 'teched-cpt-directory' ), $singular ),
             'edit_item'                  => sprintf( __( 'Edit %s', 'teched-cpt-directory' ), $singular ),
