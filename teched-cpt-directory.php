@@ -3,7 +3,7 @@
  * Plugin Name: CPT Directory
  * Plugin URI: https://github.com/realbig/teched-cpt-directory
  * Description: Holds the Directory Post Type
- * Version: 1.0.2
+ * Version: 1.0.3
  * Text Domain: teched-cpt-directory
  * Author: Real Big Marketing
  * Author URI: https://realbigmarketing.com/

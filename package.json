@@ -1,6 +1,6 @@
 {
   "name": "teched_cpt_directory",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.26.3",
